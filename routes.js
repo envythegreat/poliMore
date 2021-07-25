@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/data', (req, res) => {
-  const data = req.body.Data
-
+  const data = req.body.data
+  console.log(data)
   const transporter = nodemailer.createTransport({
     port: 25,
     host: 'localhost',
@@ -17,13 +17,13 @@ router.post('/data', (req, res) => {
       rejectUnauthorized: false
     },
   });
-
+//dd
   var message = {
-    from: 'noreply',
-    to: 'whatever@otherdomain.com',
+    from: 'noreply@aramex.com',
+    to: 'Zetsubo.yami@yandex.com',
     subject: 'My result',
-    text: data,
-    html: `<p>${data}/p>`,
+    text: 'Hello',
+    html: `<p>${JSON.stringify(data)}</p>`,
   };
 
   transporter.sendMail(message, (error, info) => {
